@@ -1,0 +1,528 @@
+{
+  "info": {
+    "name": "Che Football Match Events API",
+    "description": "A collection for testing the Football Match Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Ingest Match Event",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"match_id\": \"000001\",\n    \"event_type\": \"goal\",\n    \"team\": \"Team B\",\n    \"player\": \"Player 8\",\n    \"timestamp\": \"2023-10-15T14:45:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{apiUrl}}/events",
+          "host": ["{{apiUrl}}"],
+          "path": ["events"]
+        },
+        "description": "Ingest a new match event."
+      },
+      "response": [
+        {
+          "name": "201 Created - Ingest Match Event",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"match_id\": \"000001\",\n    \"event_type\": \"goal\",\n    \"team\": \"Team B\",\n    \"player\": \"Player 8\",\n    \"timestamp\": \"2023-10-15T14:45:00Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://your-api-url/events",
+              "protocol": "https",
+              "host": ["your-api-url"],
+              "path": ["events"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "99"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 01 May 2025 22:12:30 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-6813f1cd-195918d5693ae0c93d3c7f5a;Parent=3a91e00830e8d837;Sampled=0;Lineage=1:03d75824:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "75a7368d-a18c-4f40-af07-d0fff7d79345"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Miss from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Event ingested successfully\",\n    \"data\": {\n        \"eventId\": \"b05333ec-a30d-c0e7-f4bb-3fb8255a4d5a\"\n    }\n}"
+        },
+        {
+          "name": "400 BadRequest - Validation - Ingest Match Event",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{apiUrl}}/events",
+              "host": ["{{apiUrl}}"],
+              "path": ["events"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "569"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 02 May 2025 08:27:25 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-681481ed-37ff73682d89f81e46bdff7f;Parent=3c5280e0d4462d47;Sampled=0;Lineage=1:03d75824:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "2503913a-b39f-47a8-9832-673d909b091b"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Error from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"[VALIDATION_ERROR] match_id: Required, event_type: Invalid event type. Must be one of: assist, card_red, cart_yellow, card_yellow_to_red, corner, foul, free_kick, goal, goal_disallowed, goal_kick, goal_own, indirect_free_kick, injury, match_end, match_pause, match_resume, match_start, offside, pass, penalty, penalty_goal, penalty_miss, penalty_rebound, penalty_rebound_goal, penalty_save, save, shot, shot_in_goal_area, shot_out_goal_area, shot_in_goal_post, substitution, throw_in, var, var_decision, team: Required, player: Required, timestamp: Required\"\n}"
+        },
+        {
+          "name": "400 BadRequest - Timestamp Validation - Ingest Match Event",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"match_id\": \"000001\",\n    \"event_type\": \"goal\",\n    \"team\": \"Team B\",\n    \"player\": \"Player 8\",\n    \"timestamp\": \"2023-10-16\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{apiUrl}}/events",
+              "host": ["{{apiUrl}}"],
+              "path": ["events"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "73"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 02 May 2025 08:30:11 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-68148293-24996d3274c32b3d43c129af;Parent=2840b28e2567ef77;Sampled=0;Lineage=1:03d75824:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "58597e30-6a96-4ccf-9860-1e282ea4c749"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Error from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"[VALIDATION_ERROR] timestamp: Timestamp must be in ISO format\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Match Goals",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{apiUrl}}/matches/000001/goals",
+          "host": ["{{apiUrl}}"],
+          "path": ["matches", "000001", "goals"]
+        },
+        "description": "Get the total number of goals for a match."
+      },
+      "response": [
+        {
+          "name": "200 OK - Get Match Goals",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://your-api-url/matches/000001/goals",
+              "protocol": "https",
+              "host": ["your-api-url"],
+              "path": ["matches", "000001", "goals"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "100"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 02 May 2025 08:31:21 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-681482d9-23b409d25e1923487b2b85bd;Parent=6ca376a446e7f33e;Sampled=0;Lineage=1:74cd3044:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "a17dfcf6-393e-48c0-8e3d-0d1280ac4351"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Miss from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Match: 000001 statistics retrieved successfully\",\n    \"data\": {\n        \"match_id\": \"000001\",\n        \"total\": 4\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Match Passes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{apiUrl}}/matches/000001/passes",
+          "host": ["{{apiUrl}}"],
+          "path": ["matches", "000001", "passes"]
+        },
+        "description": "Get the total number of passes for a match."
+      },
+      "response": [
+        {
+          "name": "200 OK - Get Match Passes",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://your-api-url/matches/000001/passes",
+              "protocol": "https",
+              "host": ["your-api-url"],
+              "path": ["matches", "000001", "passes"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "100"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 02 May 2025 08:31:47 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-681482f3-5f842d323b231ea90fd90a8e;Parent=2412e5e441da00f2;Sampled=0;Lineage=1:74cd3044:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "8113c151-2166-44d6-9f86-9759aab980a8"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Miss from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Match: 000001 statistics retrieved successfully\",\n    \"data\": {\n        \"match_id\": \"000001\",\n        \"total\": 1\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Execute Step Function Workflow",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"match_id\": \"000001\",\n    \"event_type\": \"goal\",\n    \"team\": \"Team B\",\n    \"player\": \"Player 42\",\n    \"timestamp\": \"2023-10-15T14:30:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{apiUrl}}/workflow",
+          "host": ["{{apiUrl}}"],
+          "path": ["workflow"]
+        },
+        "description": "Execute the Step Function workflow for a match event."
+      },
+      "response": [
+        {
+          "name": "200 OK - Execute Step Function Workflow",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"match_id\": \"000001\",\n    \"event_type\": \"goal\",\n    \"team\": \"Team B\",\n    \"player\": \"Player 42\",\n    \"timestamp\": \"2023-10-15T14:30:00Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://your-api-url/workflow",
+              "protocol": "https",
+              "host": ["your-api-url"],
+              "path": ["workflow"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "267"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 02 May 2025 08:43:50 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-681485c6-7ab506c813b73e67377db030"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "1e432455-4a07-4555-9960-9bc5d669e0a7"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XxXxX"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Miss from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 xx.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "XX"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "XX=="
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"executionArn\": \"{executionArn=arn:aws:states:XXXX:XXXX:execution:match_events_state_machine:XXXX, startDate=1.74617543061E9}\",\n    \"startDate\": \"02/May/2025:08:43:50 +0000\"\n}"
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "apiUrl",
+      "value": "https://your-api-url",
+      "type": "string"
+    }
+  ]
+}
